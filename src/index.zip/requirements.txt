@@ -3,4 +3,3 @@ six
 regex
 boto3
 lambda
-json
