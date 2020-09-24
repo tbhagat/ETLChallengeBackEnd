@@ -2,4 +2,3 @@ requests
 six
 regex
 boto3
-pandas
