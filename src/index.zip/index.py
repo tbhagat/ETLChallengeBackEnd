@@ -25,3 +25,4 @@ def lambda_handler(event, context):
     client = boto3.resource('dynamodb')
     table = client.Table("ETLDynamoDB")
     table.put_item(Item= {'Date': '34','company':  'microsoft'})
+#test
