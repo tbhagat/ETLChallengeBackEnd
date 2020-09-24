@@ -18,16 +18,16 @@ Resources:
         GetResource:
           Type: Api
           Properties:
-            Path: /CountFunction
+            Path: /ETLData
             Method: get
 
   Table:
     Type: AWS::Serverless::SimpleTable
     Properties:
       PrimaryKey:
-        Name: site
-        Type: String
-      TableName: analytics
+        Name: Date
+        Type: Number
+      TableName: Covid
 
 Outputs:
   ApiURL:
