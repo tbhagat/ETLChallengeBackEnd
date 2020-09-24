@@ -11,6 +11,8 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref Table
+      Layers:
+        - "arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-pandas:18"
       Environment:
         Variables:
           TABLE_NAME: !Ref Table
