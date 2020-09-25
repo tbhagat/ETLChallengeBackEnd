@@ -13,6 +13,8 @@ Resources:
             TableName: !Ref Table
       Layers:
         - "arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-pandas:18"
+      MemorySize: 256
+      Timeout: 30
       Environment:
         Variables:
           TABLE_NAME: !Ref Table
@@ -28,7 +30,7 @@ Resources:
     Properties:
       PrimaryKey:
         Name: Date
-        Type: Number
+        Type: String
       TableName: Covid
 
 Outputs:

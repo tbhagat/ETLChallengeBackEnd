@@ -2,7 +2,7 @@ import pandas as pd
 import json
 import boto3
 
-def lambda_handler(event, context):
+def handler(event, context):
 
     nyt_source_url = "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us.csv"
     jh_source_url = "https://raw.githubusercontent.com/datasets/covid-19/master/data/time-series-19-covid-combined.csv"
@@ -25,4 +25,3 @@ def lambda_handler(event, context):
     client = boto3.resource('dynamodb')
     table = client.Table("ETLDynamoDB")
     table.put_item(Item= {'Date': '34','company':  'microsoft'})
-#test
