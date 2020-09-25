@@ -1,6 +1,7 @@
 import pandas as pd
 import json
 import boto3
+import os
 
 def handler(event, context):
 
@@ -23,7 +24,7 @@ def handler(event, context):
     final_data = data.to_dict()
 
     client = boto3.resource('dynamodb')
-    table = client.Table("Covid")
+    table = client.Table(os.environ['TABLE_NAME'])
 
     for i in final_data["Date"]:
         table.put_item(Item= {'Date': final_data["Date"][i].isoformat(),
