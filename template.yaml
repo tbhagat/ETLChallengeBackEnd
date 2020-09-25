@@ -34,4 +34,3 @@ Resources:
         Name: Date
         Type: String
       TableName:
-        Ref: Covid
