@@ -33,4 +33,4 @@ Resources:
       PrimaryKey:
         Name: Date
         Type: String
-      TableName: Covid
+      TableName: 
