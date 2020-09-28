@@ -60,4 +60,4 @@ Resources:
   SNS:
     Type: AWS::SNS::Topic
     Properties:
-      DisplayName: Covid Count Update 
+      DisplayName: Covid Count Update
