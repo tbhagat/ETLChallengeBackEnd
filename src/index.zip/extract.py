@@ -1,6 +1,4 @@
 # extract.py
 
-def TestMe(arg):
+def TestMe():
     print("Hello World!")
-    pass
-    
