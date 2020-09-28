@@ -5,23 +5,14 @@ import os
 from lib import extract
 from lib import transform
 
+client = boto3.resource('dynamodb')
+table = client.Table(os.environ['TABLE_NAME'])
+sns_arn = os.environ['SNS_TOPIC_ARN']
+sns = boto3.client("sns")
+
+
 def handler(event, context):
-    nyt_source_url = "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us.csv"
-    jh_source_url = "https://raw.githubusercontent.com/datasets/covid-19/master/data/time-series-19-covid-combined.csv"
-
-    nyt_df = pd.read_csv(nyt_source_url, low_memory=False)
-    nyt_df.rename(columns={"date": "Date", "cases": "Cases", "deaths": "Deaths"}, inplace=True)
-    nyt_df_final= nyt_df.drop(0).reset_index(drop=True)
-
-    jh_df = pd.read_csv(jh_source_url, low_memory=False)
-    jh_df_us = jh_df.loc[jh_df['Country/Region'] == "US"]
-    jh_df_final = jh_df_us[["Recovered"]].astype(int).reset_index(drop=True)
-
-    data = nyt_df_final.join(jh_df_final)
-    fdata = data.to_dict()
-
-    client = boto3.resource('dynamodb')
-    table = client.Table(os.environ['TABLE_NAME'])
+    fdata = transform.data_transform()
     db_data = table.scan(AttributesToGet=['Date'])
 
     date_list = []
@@ -42,8 +33,7 @@ def handler(event, context):
             updated_items.append(("Date {} has been loaded into the database. Cases {},  Deaths {}, Recovered {}".format(fdata["Date"][i],fdata["Cases"][i], fdata["Deaths"][i],  fdata["Recovered"][i])))
 
     message =  ("{} dates have been added to the database.".format(count) + "\n" + "\n".join(updated_items))
-    sns_arn = os.environ['SNS_TOPIC_ARN']
-    sns = boto3.client("sns")
+
 
     if count > 0:
         response = sns.publish(
