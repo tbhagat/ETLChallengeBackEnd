@@ -11,6 +11,7 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref Table
+            SNS_TOPIC_ARN: !Ref SNS
       Layers:
         - "arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-pandas:18"
       MemorySize: 256
@@ -34,3 +35,9 @@ Resources:
         Name: Date
         Type: String
       TableName:
+
+  SNS:
+    Type: AWS::SNS::Topic
+    Properties:
+      DisplayName: ETL Covid SNS
+      TopicName: String
