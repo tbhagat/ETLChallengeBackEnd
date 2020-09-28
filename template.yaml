@@ -19,6 +19,7 @@ Resources:
       Environment:
         Variables:
           TABLE_NAME: !Ref Table
+          SNS_TOPIC_ARN: !Ref SNS
       Events:
         CWSchedule:
           Type: Schedule
@@ -40,4 +41,4 @@ Resources:
     Type: AWS::SNS::Topic
     Properties:
       DisplayName: ETL Covid SNS
-      TopicName: String
+      TopicName:
