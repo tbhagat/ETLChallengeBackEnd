@@ -31,6 +31,24 @@ Resources:
             Description: ETL Covid Data
             Enabled: True
 
+  PullFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: lambda_function.handler
+      Runtime: python3.8
+      CodeUri: ./src/lambda_function.zip
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref Table
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref Table
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /CovidPull
+            Method: get
   Table:
     Type: AWS::Serverless::SimpleTable
     Properties:
