@@ -12,8 +12,7 @@ Resources:
         - DynamoDBCrudPolicy:
             TableName: !Ref Table
         - SNSCrudPolicy:
-            SNS_TOPIC_ARN:
-              Ref: SNS
+            SNS_TOPIC_ARN: !Ref SNS
       Layers:
         - "arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-pandas:18"
       MemorySize: 256
