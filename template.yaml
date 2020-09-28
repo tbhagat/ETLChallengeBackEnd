@@ -41,4 +41,3 @@ Resources:
     Type: AWS::SNS::Topic
     Properties:
       DisplayName: ETL Covid SNS
-      TopicName:
