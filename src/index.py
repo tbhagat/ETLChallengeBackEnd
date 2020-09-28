@@ -42,7 +42,7 @@ def handler(event, context):
             updated_items.append(("Date {} has been loaded into the database. Cases {},  Deaths {}, Recovered {}".format(fdata["Date"][i],fdata["Cases"][i], fdata["Deaths"][i],  fdata["Recovered"][i])))
 
     message =  ("{} dates have been added to the database.".format(count) + "\n" + "\n".join(updated_items))
-    sns_arn = "arn:aws:sns:us-east-1:741539688093:dynamodb"
+    sns_arn = os.environ['SNS_TOPIC_ARN']   
     sns = boto3.client("sns")
 
     if count > 0:
