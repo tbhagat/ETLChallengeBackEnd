@@ -1,1 +1,1 @@
-from extract.py import *
+import extract.py
