@@ -1,4 +1,3 @@
 # extract.py
-
-def TestMe():
-    print("Hello World!")
+def sum(a,b):
+    return a+b
