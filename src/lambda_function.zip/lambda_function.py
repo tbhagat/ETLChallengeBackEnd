@@ -1,10 +1,11 @@
 import json
 import boto3
+import os
 from decimal import Decimal
 
 
 client = boto3.resource('dynamodb')
-table = client.Table("ETLBackend-Table-GF6RYJTLM6Q3")
+table = client.Table(os.environ['TABLE_NAME'])
 
 class DecimalEncoder(json.JSONEncoder):
     def default(self, obj):
