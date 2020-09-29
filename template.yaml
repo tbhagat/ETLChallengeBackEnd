@@ -26,7 +26,7 @@ Resources:
         CWSchedule:
           Type: Schedule
           Properties:
-            Schedule: 'cron(0 9 * * ? *)'
+            Schedule: 'cron(0 14 * * ? *)'
             Name: CovidETLSchedule
             Description: ETL Covid Data
             Enabled: True
