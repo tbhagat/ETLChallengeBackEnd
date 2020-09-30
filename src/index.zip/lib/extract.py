@@ -17,7 +17,7 @@ def send_sns(text):
             Message=text,
         )
     except:
-        print("Not able to send message")
+        print("Cannot send message")
 
 
 
@@ -28,6 +28,6 @@ def data_pull():
         jh_df =  pd.read_csv(jh_source_url, low_memory=False)
         return nyt_df, jh_df
     except:
-        send_sns("unable to load data from API ,please look into cloudwatch log")
+        send_sns("Cannot load source data")
         print("Cannot load source data")
         sys.exit(1)

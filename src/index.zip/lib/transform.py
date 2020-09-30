@@ -8,8 +8,8 @@ nyt_df, jh_df = extract.data_pull()
 
 def data_transform():
     try:
-        nyt_df["date"] = pd.to_datetime(nyt_df["date"]).dt.strftime('%m/%d/%Y')
         nyt_df.rename(columns={"date": "Date", "cases": "Cases", "deaths": "Deaths"}, inplace=True)
+        nyt_df["Date"] = pd.to_datetime(nyt_df["Date"]).dt.strftime('%m/%d/%Y')
         nyt_df_final= nyt_df.drop(0).reset_index(drop=True)
 
         jh_df["Date"] = pd.to_datetime(jh_df["Date"]).dt.strftime('%m/%d/%Y')

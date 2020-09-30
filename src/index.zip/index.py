@@ -22,7 +22,6 @@ def handler(event, context):
 
     count = 0
     updated_items = []
-    message =  ("{} dates have been added to the database.".format(count) + "\n" + "\n".join(updated_items))
     try:
         for i in fdata["Date"]:
             if fdata["Date"][i] not in date_list:
@@ -32,6 +31,7 @@ def handler(event, context):
                                     "Recovered": fdata["Recovered"][i]})
                 count +=1
                 updated_items.append(("Date {} has been loaded into the database. Cases {},  Deaths {}, Recovered {}".format(fdata["Date"][i],fdata["Cases"][i], fdata["Deaths"][i],  fdata["Recovered"][i])))
+        message =  ("{} dates have been added to the database.".format(count) + "\n" + "\n".join(updated_items))
 
         if count > 0:
             extract.send_sns(message)
