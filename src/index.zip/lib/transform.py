@@ -28,26 +28,26 @@ def data_transform():
 
 def data_validation(fdata):
     for i in fdata["Cases"]:
-        if type(fdata["Cases"][i]) == int:
+        if type(fdata["Cases"][i]) == int and fdata["Cases"][i] >= 0:
             pass
         else:
-            message = "{} is not in the correct format".format(fdata["Cases"][i])
+            message = "Cases {} is not in the correct format".format(fdata["Cases"][i])
             extract.send_sns(message)
             print(message)
             sys.exit(1)
     for i in fdata["Deaths"]:
-        if type(fdata["Deaths"][i]) == int:
+        if type(fdata["Deaths"][i]) == int and fdata["Deaths"][i] >= 0:
             pass
         else:
-            message =  "{} is not in the correct format".format(fdata["Deaths"][i])
+            message =  "Deaths {} is not in the correct format".format(fdata["Deaths"][i])
             extract.send_sns(message)
             print(message)
             sys.exit(1)
     for i in fdata["Recovered"]:
-        if type(fdata["Recovered"][i]) == int:
+        if type(fdata["Recovered"][i]) == int and fdata["Recovered"][i] >= 0:
             pass
         else:
-            message =  "{} is not in the correct format".format(fdata["Recovered"][i])
+            message =  "Recovered {} is not in the correct format".format(fdata["Recovered"][i])
             extract.send_sns(message)
             print(message)
             sys.exit(1)
@@ -59,4 +59,3 @@ def data_validation(fdata):
             extract.send_sns(message)
             print(message)
             sys.exit(1)
-        
