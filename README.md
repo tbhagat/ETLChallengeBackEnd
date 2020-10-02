@@ -1,11 +1,9 @@
 # ELTChallengeBackEnd
 I completed the Cloud Resume Challenge posted by Forrest a couple months ago and when I saw this posted I knew I had to give it a try. On paper this challenge seemed a bit easier than the last but I ended writing more code and learning even more throughout it. Below I'll explain how I worked through each step of the challenge and my thought process through it, so without further ado let's get into it. 
 
-The main challenge page can be found [here:] (https://acloudguru.com/blog/engineering/cloudguruchallenge-python-aws-etl)
+The main challenge page can be found [here](https://acloudguru.com/blog/engineering/cloudguruchallenge-python-aws-etl)
 
-The finished product has be seen [here:](https://tejasbhagat.com/covid.html)
-
-My repo for the project [here:]
+The finished product has be seen [here](https://tejasbhagat.com/covid.html)
 
 ### **IaC, Source Control, CI/CD**
 
