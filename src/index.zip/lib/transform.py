@@ -9,11 +9,11 @@ nyt_df, jh_df = extract.data_pull()
 def data_transform():
     try:
         nyt_df.rename(columns={"date": "Date", "cases": "Cases", "deaths": "Deaths"}, inplace=True)
-        nyt_df["Date"] = pd.to_datetime(nyt_df["Date"]).dt.strftime('%m/%d/%Y')
+        nyt_df["Date"] = pd.to_datetime(nyt_df["Date"]).dt.strftime('%Y-%m-%d')
         nyt_df_final= nyt_df.drop(0).reset_index(drop=True)
 
         jh_df.rename(columns={"date": "Date", "recovered": "Recovered"}, inplace=True)
-        jh_df["Date"] = pd.to_datetime(jh_df["Date"]).dt.strftime('%m/%d/%Y')
+        jh_df["Date"] = pd.to_datetime(jh_df["Date"]).dt.strftime('%Y-%m-%d')
         jh_df.Recovered = jh_df.Recovered.values[::-1]
         jh_df2 = jh_df.drop([0,1,2,3,4,5,6,7,8]).reset_index(drop=True)
         jh_df_final = jh_df2[["Recovered"]].fillna(0).astype(int).reset_index(drop=True)
